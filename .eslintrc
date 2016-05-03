@@ -1,0 +1,21 @@
+---
+parser: babel-eslint
+extends:
+  - standard
+  - standard-react
+
+env:
+  node: true
+  browser: true
+  mocha: true
+
+rules:
+  max-len:
+    - 1
+    - 100
+  complexity:
+    - 1
+    - max: 10
+
+  react/jsx-no-bind:
+    - 1
