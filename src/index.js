@@ -43,16 +43,6 @@ const Greet = connect(
   state => state
 )(
   class extends React.Component {
-    static propTypes = {
-      dispatch: React.PropTypes.func.isRequired,
-      itako: React.PropTypes.object.isRequired,
-      text: React.PropTypes.string,
-      speaker: React.PropTypes.string,
-      speakers: React.PropTypes.array,
-      comments: React.PropTypes.array,
-      read: React.PropTypes.func,
-      form: React.PropTypes.object
-    }
     static ranges = ['pitch', 'speed', 'volume']
 
     componentDidMount () {

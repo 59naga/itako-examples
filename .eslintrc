@@ -19,3 +19,6 @@ rules:
 
   react/jsx-no-bind:
     - 1
+
+  react/prop-types:
+    - 0

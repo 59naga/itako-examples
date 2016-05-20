@@ -1,17 +1,15 @@
-import ItakoTextReaderSpeechSynthesis from 'itako-text-reader-speech-synthesis'
 import ItakoAudioReaderAudioContext from 'itako-audio-reader-audio-context'
 import ItakoTextTransformerDictionary from 'itako-text-transformer-dictionary'
 import ItakoTextTransformerRequest from 'itako-text-transformer-request'
 
 export default () => {
   const readers = [
-    new ItakoTextReaderSpeechSynthesis(),
     new ItakoAudioReaderAudioContext()
   ]
   const transformers = [
     new ItakoTextTransformerDictionary(),
     new ItakoTextTransformerRequest('text', {
-      baseUrl: 'https://voicetext.berabou.me/',
+      baseUrl: 'http://voicetext.berabou.me/',
       toType: 'audio',
       defaults: {
         data: {
@@ -22,13 +20,16 @@ export default () => {
       beforeTransform (token) {
         var opts = {}
         if (token.options.pitch) {
-          opts.pitch = token.options.pitch * 100
+          opts.pitch = Math.floor(token.options.pitch * 100)
+          opts.pitch = opts.pitch < 50 ? 50 : opts.pitch
         }
         if (token.options.volume) {
-          opts.volume = token.options.volume * 100
+          opts.volume = Math.floor(token.options.volume * 100)
+          opts.volume = opts.volume < 50 ? 50 : opts.volume
         }
         if (token.options.speed) {
-          opts.speed = token.options.speed * 100
+          opts.speed = Math.floor(token.options.speed * 100)
+          opts.speed = opts.speed < 50 ? 50 : opts.speed
         }
         return token.setOptions(opts)
       }

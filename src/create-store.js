@@ -13,7 +13,8 @@ const initialState = {
   },
   itako: {
     read: {
-      serial: true
+      serial: true,
+      preload: true
     },
     transformers: {
       dictionary: {
@@ -34,13 +35,13 @@ const initialState = {
           {
             pattern: 'nintendo',
             method: 'exchange',
-            replacement: "{type:'audio',value:'https://static.edgy.black/fixture.wav'}"
+            replacement: "{type:'audio',value:'http://static.edgy.black/fixture.wav'}"
           },
           // if match, overrides all tokens using new instance
           {
             pattern: '/play\\((.+?).wav\\)/',
             method: 'rewrite',
-            replacement: "{type:'audio',value:'https://static.edgy.black/$1.wav'}"
+            replacement: "{type:'audio',value:'http://static.edgy.black/$1.wav'}"
           },
           // if match, passed arguments of transform to onMatch
           {
